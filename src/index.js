@@ -3,13 +3,13 @@ const Collection = require('./Collection');
 module.exports = class MongoMocker {
   constructor(collections) {
     this.collections = {};
-    for(let collection in collections || {}) {
+
+    for (let collection in collections || {}) {
       if (!(collections[collection] instanceof Array)) {
         throw `${collection} collection should be an array`;
       }
       this.collections[collection] = new Collection(collections[collection]);
     }
-
     this.mock = {
       clear: (collection) => this.collections[collection].drop(),
       clearAll: () => {
@@ -17,7 +17,9 @@ module.exports = class MongoMocker {
           this.mock.clear(collection);
         }
       },
-      getCollectionData: (collection) => this.collections[collection]._data
+      getCollectionData: (collection) => {
+        return this.collections[collection] ? this.collections[collection]._data : undefined
+      }
     }
   }
 

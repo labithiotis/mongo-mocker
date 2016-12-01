@@ -1,7 +1,7 @@
 {
   "name": "mongo-mocker",
-  "version": "0.0.1",
-  "description": "Mocks mongoDB Layer",
+  "version": "0.0.2",
+  "description": "A Promise/Generator Driven Mocked MongoDB Layer",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --harmony -r co-mocha -r test/setup.js --timeout=5000 --ui bdd src/**/*.test.js",
@@ -18,7 +18,9 @@
     "MongoDB",
     "Mock",
     "Mocker",
-    "Test"
+    "Test",
+    "co-mongo",
+    "co"
   ],
   "author": "Darren Labithiotis",
   "license": "MIT",

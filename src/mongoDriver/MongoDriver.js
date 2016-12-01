@@ -35,7 +35,7 @@ module.exports = class MongoDriver {
   find(query, options) {
     options = options || {};
 
-    let filteredArray = this._data.filter((item) => utils.allKeysValid(query, item));
+    let filteredArray = this._data.filter((item) => allKeysValid(query, item));
 
     if (options.skip) {
       filteredArray = filteredArray.slice(options.skip, filteredArray.length);

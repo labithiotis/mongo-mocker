@@ -1,12 +1,10 @@
 const MongoMocker = require('./src/index');
 
-module.exports = {
-  MongoMocker: MongoMocker,
-  MockedMongoMocker: (mongoModule, dbData) => {
-    const mongoMock = new MongoMocker(dbData);
-    if (typeof mongoModule === 'string') {
-      require('mock-require')(mongoModule, { db: mongoMock });
-    }
-    return mongoMock;
+module.exports = function() {
+  const mockModulePath = typeof arguments[0] === 'string' ? arguments[0] : null;
+  const mongoMock = new MongoMocker(mockModulePath ? arguments[1] : arguments[0]);
+  if (mockModulePath) {
+    require('mock-require')(mockModulePath, { db: mongoMock });
   }
+  return mongoMock;
 };
