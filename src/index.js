@@ -11,8 +11,9 @@ module.exports = class MongoMocker {
       }
       this.collections[collection] = new Collection(collections[collection]);
     }
+
     this.mock = {
-      clear: (collection) => this.collections[collection].drop(),
+      clear: (collection) => collection && this.collections[collection].drop(),
       clearAll: () => {
         for (let collection in this.collections) {
           this.mock.clear(collection);
