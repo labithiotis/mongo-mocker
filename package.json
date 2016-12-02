@@ -15,7 +15,8 @@
     "lint-fix": "sh .lint-fix.sh"
   },
   "pre-commit": [
-    "lint-fix"
+    "lint-fix",
+    "lint"
   ],
   "keywords": [
     "Co",

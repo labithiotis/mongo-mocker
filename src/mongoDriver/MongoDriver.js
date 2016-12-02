@@ -1,7 +1,6 @@
 'use strict';
 const bson = require('bson');
 const ObjectID = bson.ObjectID;
-const utils = require('./utils');
 const modifiers = require('./operators/modifiers');
 const allKeysValid = require('./allKeysValid');
 

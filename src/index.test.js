@@ -17,7 +17,7 @@ describe('MongoMocker', () => {
   });
 
   describe('Basic functionality', () => {
-    it('should init with initial data', function* () {
+    it('should init with initial data', function () {
       mongo = new MongoMocker({ test: [], example: [{ object: 1 }, { object: 2 }] });
       expect(mongo.mock.getCollectionData('example')).to.deep.equal([{ object: 1 }, { object: 2 }]);
     });
@@ -64,7 +64,7 @@ describe('MongoMocker', () => {
   });
 
   describe('Mock methods', () => {
-    it('clear', function* () {
+    it('clear', function() {
       mongo = new MongoMocker({ test: [{ test: 1 }] });
       expect(mongo.mock.getCollectionData('test').length, 'collection is empty instead of containing one').to.equal(1);
       mongo.mock.clear();
@@ -73,7 +73,7 @@ describe('MongoMocker', () => {
       expect(mongo.mock.getCollectionData('test').length, 'collection is not empty after .clear()').to.equal(0);
     });
 
-    it('clearAll', function* () {
+    it('clearAll', function() {
       mongo = new MongoMocker({ test1: [{ test1: 1 }], test2: [{ test2: 1 }] });
       expect(mongo.mock.getCollectionData('test1').length, 'collection is empty instead of containing one').to.equal(1);
       expect(mongo.mock.getCollectionData('test2').length, 'collection is empty instead of containing one').to.equal(1);
@@ -82,7 +82,7 @@ describe('MongoMocker', () => {
       expect(mongo.mock.getCollectionData('test2').length, 'collection is not empty after .clearAll()').to.equal(0);
     });
 
-    it('getCollectionData', function* () {
+    it('getCollectionData', function() {
       mongo = new MongoMocker({ test1: [{ _id: 1, test1: 1 }, { _id: 2, test2: 2 }], test2: [{ test2: 1 }] });
       const data = mongo.mock.getCollectionData('test1');
       expect(data[0]).to.deep.equal({ _id: 1, test1: 1 });
