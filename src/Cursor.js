@@ -1,3 +1,4 @@
+'use strict';
 const util = require('util');
 const mongoModifiers = require('./mongoDriver');
 const ReadableStream = require('stream').Readable;

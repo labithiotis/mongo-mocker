@@ -1,3 +1,4 @@
+'use strict';
 const bson = require('bson');
 const ObjectID = bson.ObjectID;
 const utils = require('./utils');

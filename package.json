@@ -1,6 +1,6 @@
 {
   "name": "mongo-mocker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Promise/Generator Driven Mocked MongoDB Layer",
   "main": "index.js",
   "scripts": {
@@ -14,13 +14,16 @@
     "lint-fix"
   ],
   "keywords": [
-    "Mongo",
-    "MongoDB",
-    "Mock",
-    "Mocker",
+    "Co",
     "Test",
-    "co-mongo",
-    "co"
+    "Mock",
+    "Mongo",
+    "Mocker",
+    "MongoDB",
+    "Promise",
+    "Co-Mongo",
+    "Generator",
+    "then-mongo"
   ],
   "author": "Darren Labithiotis",
   "license": "MIT",

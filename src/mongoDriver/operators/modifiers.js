@@ -1,3 +1,4 @@
+'use strict';
 const _ = require('lodash');
 const MongoDriver = require('./../MongoDriver');
 const utils = require('./../utils');

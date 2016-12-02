@@ -1,3 +1,4 @@
+'use strict';
 const allKeysValid = require('./../allKeysValid');
 
 module.exprots = {

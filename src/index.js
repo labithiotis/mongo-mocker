@@ -1,3 +1,4 @@
+'use strict';
 const Collection = require('./Collection');
 
 module.exports = class MongoMocker {

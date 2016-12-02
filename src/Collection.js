@@ -1,3 +1,4 @@
+'use strict';
 const Cursor = require('./Cursor');
 const utils = require('./mongoDriver/utils');
 const _ = require('./mongoDriver');
