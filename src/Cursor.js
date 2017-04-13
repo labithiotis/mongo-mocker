@@ -52,12 +52,22 @@ Cursor.prototype._read = function() {
 };
 
 Cursor.prototype.sort = function (comparator) {
-    var compareKey = Object.keys(comparator).pop();
-    var comparing = comparator[compareKey];
-    this._source.sort((a, b) => {
-        return a[compareKey] > b[compareKey] ? comparing : (a[compareKey] == b[compareKey] ? 0 : -comparing);
-    });
-    return this;
+  const compareKey = Object.keys(comparator).pop();
+  const comparing = comparator[compareKey];
+  this._source.sort((a, b) => {
+    return a[compareKey] > b[compareKey] ? comparing : (a[compareKey] === b[compareKey] ? 0 : -comparing);
+  });
+  return this;
+};
+
+Cursor.prototype.limit = function (limit) {
+  this._source = this._source.slice(0, limit);
+  return this;
+};
+
+Cursor.prototype.skip = function (skip) {
+  this._source = this._source.slice(skip, this._source.length);
+  return this;
 };
 
 Cursor.prototype.toArray = function() {

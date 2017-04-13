@@ -41,6 +41,45 @@ describe('MongoMocker', () => {
       expect(doc.other).to.equal(2);
     });
 
+    it('should find many documents', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert({ test: '1' });
+      yield collection.insert({ test: '2' });
+      const docs = yield collection.find({}).toArray();
+      expect(docs).to.be.a('array');
+      expect(docs.length).to.be.equal(2);
+    });
+
+    it('should limit documents', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert({ test: '1' });
+      yield collection.insert({ test: '2' });
+      const docs = yield collection.find({}).limit(1).toArray();
+      expect(docs).to.be.a('array');
+      expect(docs.length).to.be.equal(1);
+    });
+
+    it('should skip documents', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert({ test: '1' });
+      yield collection.insert({ test: '2' });
+      const docs = yield collection.find({}).skip(1).toArray();
+      expect(docs).to.be.a('array');
+      expect(docs.length).to.be.equal(1);
+      expect(docs[0].test).to.be.equal('2');
+    });
+
+    it('should combine limit and skip for documents', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert({ test: '1' });
+      yield collection.insert({ test: '2' });
+      yield collection.insert({ test: '3' });
+      const docs = yield collection.find({}).skip(1).limit(2).toArray();
+      expect(docs).to.be.a('array');
+      expect(docs.length).to.be.equal(2);
+      expect(docs.pop().test).to.be.equal('3');
+    });
+
     it('should support operators', function* () {
       const collection = yield mongo.collection('test');
       yield collection.insert({ test: 20 });
@@ -50,7 +89,7 @@ describe('MongoMocker', () => {
       expect(doc.test).to.equal(20);
     });
 
-    it('should support promise pattern', function(done) {
+    it('should support promise pattern', function (done) {
       mongo.collection('test').then((collection) => {
         collection.insert({ test: '1' }).then(() => {
           const data = mongo.mock.getCollectionData('test');

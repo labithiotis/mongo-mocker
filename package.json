@@ -48,6 +48,6 @@
     "sinon-chai": "^2.8.0"
   },
   "engines": {
-    "node": "6.9"
+    "node": ">=6"
   }
 }
