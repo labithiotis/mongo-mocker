@@ -61,6 +61,26 @@ describe('MongoMocker', () => {
         }).catch(done);
       }).catch(done);
     });
+
+    it('should support sort method', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert({ test: 20 });
+      yield collection.insert({ test: 10 });
+      yield collection.insert({ test: 30 });
+      const data = yield collection.find({ test: { $gt: 5 } }).sort({ test: 1 }).toArray();
+      expect(data[0]).to.be.a('object');
+      expect(data[0].test).to.equal(10);
+    });
+
+    it('should support sort method', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert({ test: 20 });
+      yield collection.insert({ test: 10 });
+      yield collection.insert({ test: 30 });
+      const data = yield collection.find({ test: { $gt: 5 } }).sort({ test: -1 }).toArray();
+      expect(data[0]).to.be.a('object');
+      expect(data[0].test).to.equal(30);
+    });
   });
 
   describe('Mock methods', () => {

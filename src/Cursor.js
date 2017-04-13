@@ -51,6 +51,15 @@ Cursor.prototype._read = function() {
     }
 };
 
+Cursor.prototype.sort = function (comparator) {
+    var compareKey = Object.keys(comparator).pop();
+    var comparing = comparator[compareKey];
+    this._source.sort((a, b) => {
+        return a[compareKey] > b[compareKey] ? comparing : (a[compareKey] == b[compareKey] ? 0 : -comparing);
+    });
+    return this;
+};
+
 Cursor.prototype.toArray = function() {
     return Promise.resolve(this._source.map(map(this._fields)));
 };
