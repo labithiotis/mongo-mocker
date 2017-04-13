@@ -10,7 +10,7 @@ npm i mongo-mocker --save-dev
 
 #### Requirements
 
-**Node:** 4.3+
+**Node:** 6+
 
 ### Setup
 
