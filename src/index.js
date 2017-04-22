@@ -33,4 +33,8 @@ module.exports = class MongoMocker {
   ensureIndex(collection, index) {
     return Promise.resolve(index);
   }
+
+  close() {
+    return Promise.resolve();
+  }
 };
