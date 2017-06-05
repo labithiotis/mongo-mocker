@@ -31,6 +31,31 @@ describe('MongoMocker', () => {
       expect(data[0].test).to.equal('1');
     });
 
+    it('should insert many documents', function* () {
+      const collection = yield mongo.collection('test');
+      yield collection.insert([
+        { test: '1' },
+        { test: '2' }
+      ]);
+      const data = mongo.mock.getCollectionData('test');
+      expect(data[0]).to.be.a('object');
+      expect(data[1]).to.be.a('object');
+      expect(data[1]).to.have.keys(['_id', 'test']);
+      expect(data[1].test).to.equal('2');
+    });
+
+    it('should create new references for inserted data', function* () {
+      const collection = yield mongo.collection('test');
+      const data = { test: '1' };
+      yield collection.insert(data);
+      yield collection.update({ test: '1' }, {
+        $set: { test: '2' }
+      });
+      const updatedData = mongo.mock.getCollectionData('test')[0];
+      expect(data.test).to.equal('1');
+      expect(updatedData.test).to.equal('2');
+    });
+
     it('should findOne document', function* () {
       const collection = yield mongo.collection('test');
       yield collection.insert({ test: '1', other: 2 });

@@ -85,10 +85,13 @@ module.exports = class MongoDriver {
   }
 
   insert(doc) {
-    if (!doc._id || !(doc._id instanceof ObjectID)) {
-      doc._id = new bson.ObjectId();
-    }
-    this._data.push(doc);
+    const docs = [].concat(JSON.parse(JSON.stringify(doc)));
+    docs.forEach((doc) => {
+      if (!doc._id || !(doc._id instanceof ObjectID)) {
+        doc._id = new bson.ObjectId();
+      }
+      this._data.push(doc);
+    });
     return doc;
   }
 
