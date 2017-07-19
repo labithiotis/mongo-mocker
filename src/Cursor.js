@@ -74,4 +74,8 @@ Cursor.prototype.toArray = function() {
     return Promise.resolve(this._source.map(map(this._fields)));
 };
 
+Cursor.prototype.batchSize = function() {
+  return this;
+};
+
 module.exports = Cursor;

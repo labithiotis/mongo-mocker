@@ -1,6 +1,6 @@
 {
   "name": "mongo-mocker",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Promise/Generator Driven Mocked MongoDB Layer",
   "main": "index.js",
   "repository" : {
