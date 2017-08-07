@@ -109,6 +109,21 @@ module.exports = class MongoDriver {
     }
   }
 
+  removeOne(query) {
+    const self = this;
+    const docs = this.find(query);
+
+    for (let i = 0; i < docs.length; i++) {
+      const doc = docs[i];
+      const index = self._data.indexOf(doc);
+
+      if (index !== -1) {
+        self._data.splice(index, 1);
+        break;
+      }
+    }
+  }
+
   findAndModify(query, modifier, options) {
     options = options || {};
     let doc = this.findOne(query);

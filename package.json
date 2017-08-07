@@ -1,11 +1,11 @@
 {
   "name": "mongo-mocker",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A Promise/Generator Driven Mocked MongoDB Layer",
   "main": "index.js",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/labithiotis/mongo-mocker.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/labithiotis/mongo-mocker.git"
   },
   "scripts": {
     "test": "NODE_ENV=test mocha --harmony -r co-mocha -r test/setup.js --timeout=5000 --ui bdd src/**/*.test.js",

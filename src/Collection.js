@@ -52,6 +52,17 @@ module.exports = class Collection {
         return Promise.resolve(counter);
     }
 
+    updateOne(query, modifier, options) {
+        options = options || {};
+        options.multi = false;
+        return this.update(query, modifier, options);
+    }
+
+    deleteOne(query) {
+        _(this._data).removeOne(query);
+        return Promise.resolve();
+    }
+
     remove(query) {
         _(this._data).remove(query);
         return Promise.resolve();
