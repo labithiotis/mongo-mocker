@@ -137,6 +137,6 @@ module.exports = class MongoDriver {
     } else if (!modifier.$set && options.upsert) {
       doc = this.insert(modifier);
     }
-    return doc;
+    return {ok: 1, lastErrorObject: {}, value: doc};
   }
 };

@@ -56,6 +56,12 @@ module.exports = {
     });
     return doc;
   },
+  $currentDate: function(doc, modifier) {
+    Object.keys(modifier).forEach(function(key) {
+      doc[key] = new Date();
+    })
+    return doc;
+  },
   $rename: function(doc, modifier) {
     Object.keys(modifier).forEach(function(key) {
       const newPropertyKey = utils.prop(key)(modifier);
