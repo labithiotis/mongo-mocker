@@ -1,3 +1,7 @@
+
+## Archived repo as it's better to use a InMemory MongoDB now
+https://www.npmjs.com/package/mongodb-memory-server
+
 # Mongo Mocker
 
 A promise/generator driven Mongo mocking layer, with in memory state and mongo operator support.
